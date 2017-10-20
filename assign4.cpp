@@ -82,6 +82,6 @@ int main()
    const Complex c5(3, 4);
    cout << c4 << " and " << c5;
    (c4 == c5) ? cout << " are equal\n" : cout << " are not equal\n";
-      
+
    return 0;
    }

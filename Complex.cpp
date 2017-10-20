@@ -158,7 +158,7 @@ Complex Complex::operator+(const Complex& rightOperand) const
 
     storage.realComplex = realComplex + rightOperand.realComplex;
 
-    storage.imaginaryComplex = imaginaryComlex + rightOperand.imaginaryComplex;
+    storage.imaginaryComplex = imaginaryComplex + rightOperand.imaginaryComplex;
 
     return storage;
 }

@@ -25,11 +25,11 @@ class Complex
     public:
         // Constructor
         Complex();
-        Complex(double, double);
+        Complex(double newReal, double newImaginary);
        
         // Complex
         void setComplex(double, double);
-        void getComplex(double, double) const; 
+        void getComplex(double&, double&) const; 
        
         // Real
         void setRealPart(double);
@@ -42,7 +42,7 @@ class Complex
         // Operators
         Complex operator+(const Complex&) const;
         Complex operator*(const Complex&) const;
-        Complex operator==(const Complex&) const;
+        bool operator==(const Complex&) const;
 
 };
 
