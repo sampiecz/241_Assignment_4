@@ -1,8 +1,8 @@
 /*********************************************************************
    PROGRAM:    CSCI 241 Assignment 4
-   PROGRAMMER: your name
-   LOGON ID:   your z-ID
-   DUE DATE:   due date of assignment
+   PROGRAMMER: Samuel Piecz 
+   LOGON ID:   z1732715 
+   DUE DATE:   10/19/17 
 
    FUNCTION:   This program tests the functionality of the Complex
                class.

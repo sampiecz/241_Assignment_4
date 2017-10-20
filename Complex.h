@@ -1,3 +1,11 @@
+//*********************************************************************
+// FILE:        Complex.h
+// AUTHOR:      Samuel Piecz
+// LOGON ID:    Z1732715
+// DUE DATE:    10/19/17
+//
+// PURPOSE:     Declaration for the Complex class. Operator overload. 
+//********************************************************************
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
