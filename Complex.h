@@ -2,17 +2,21 @@
 #define COMPLEX_H
 
 class Complex 
-{
+{    
+    // I get by with help from my friends
+    friend ostream& operator<<(ostream&, const Complex&);
+    friend istream& operator>>(istream&, Complex&);
 
     // Data members
     private:
-        double real_complex;
-        double imaginary_complex;
+        double realComplex;
+        double imaginaryComplex;
  
     // Methods Prototypes
     public:
         // Constructor
-        Complex(double=0, double=0);
+        Complex();
+        Complex(double newReal, double newImaginary);
        
         // Complex
         void setComplex(double, double);
@@ -25,6 +29,12 @@ class Complex
         // Imaginary
         void setImaginaryPart(double);
         double getImaginaryPart() const;
+
+        // Operators
+        Complex operator+(const Complex&) const;
+        Complex operator*(const Complex&) const;
+        Complex operator==(const Complex&) const;
+
 };
 
 #endif
