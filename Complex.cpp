@@ -9,12 +9,11 @@
 
  Purpose: Use operator overloaders. 
  ************************************************************/
-#include <iostream>
 #include "Complex.h"
 
 
 /***************************************************************
- ProviderDB
+ Complex Constructor 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -30,7 +29,7 @@ Complex::Complex()
 
 
 /***************************************************************
- ProviderDB
+ Alternate Complex Constructor 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -40,14 +39,14 @@ Complex::Complex()
  ***************************************************************/
 Complex::Complex(double newReal, double newImaginary)
 {
-    realComplex = newReal;
-    imaginaryComplex = newImaginary;
+    setRealPart(newReal);
+    setImaginaryPart(newImaginary);
 }
 
 
 
 /***************************************************************
- ProviderDB
+ setComplex 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -57,14 +56,14 @@ Complex::Complex(double newReal, double newImaginary)
  ***************************************************************/
 void Complex::setComplex(double newReal, double newImaginary)
 {
-    setRealPart(newReal);
-    setImaginaryPart(newImaginary);
+    realComplex = newReal;
+    imaginaryComplex = newImaginary;
 }
 
 
 
 /***************************************************************
- ProviderDB
+ getComplex 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -72,15 +71,16 @@ void Complex::setComplex(double newReal, double newImaginary)
 
  Returns:
  ***************************************************************/
-void Complex::getComplex(double newReal, double newImaginary) const
+void Complex::getComplex(double& newReal, double& newImaginary) const
 {
-       
+    newReal = realComplex;
+    newImaginary = imaginaryComplex;  
 }
 
 
 
 /***************************************************************
- ProviderDB
+ setRealPart
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -96,7 +96,7 @@ void Complex::setRealPart(double newReal)
 
 
 /***************************************************************
- ProviderDB
+ getRealPart 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -112,7 +112,7 @@ double Complex::getRealPart() const
 
 
 /***************************************************************
- ProviderDB
+ setImaginaryPart 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -128,7 +128,7 @@ void Complex::setImaginaryPart(double newImaginary)
 
 
 /***************************************************************
- ProviderDB
+ getImaginaryPart 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -144,7 +144,7 @@ double Complex::getImaginaryPart() const
 
 
 /***************************************************************
- ProviderDB
+ operator+ 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -152,14 +152,20 @@ double Complex::getImaginaryPart() const
 
  Returns:
  ***************************************************************/
-Complex::operator+()
+Complex Complex::operator+(const Complex& rightOperand) const
 {
+    Complex storage;
 
+    storage.realComplex = realComplex + rightOperand.realComplex;
+
+    storage.imaginaryComplex = imaginaryComlex + rightOperand.imaginaryComplex;
+
+    return storage;
 }
 
 
 /***************************************************************
- ProviderDB
+ operator* 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -167,15 +173,21 @@ Complex::operator+()
 
  Returns:
  ***************************************************************/
-Complex::operator*()
+Complex Complex::operator*(const Complex& rightOperand) const
 {
+    Complex storage;
 
+    storage.realComplex = (realComplex * rightOperand.realComplex) - (imaginaryComplex * rightOperand.imaginaryComplex);
+
+    storage.imaginaryComplex = (realComplex * rightOperand.imaginaryComplex) + (imaginaryComplex * rightOperand.realComplex);
+
+    return storage;   
 }
 
 
 
 /***************************************************************
- ProviderDB
+ operator== 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -183,15 +195,17 @@ Complex::operator*()
 
  Returns:
  ***************************************************************/
-Complex::operator==()
+bool Complex::operator==(const Complex& rightOperand) const
 {
-
+    if (realComplex == rightOperand.realComplex && imaginaryComplex == rightOperand.imaginaryComplex)
+        return true;
+    else
+        return false;
 }
 
 
-
 /***************************************************************
- ProviderDB
+ operator<< 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -199,15 +213,19 @@ Complex::operator==()
 
  Returns:
  ***************************************************************/
-ostream operator<<()
+ostream& operator<<(ostream& output, const Complex& alpha)
 {
+
+    output << '(' << alpha.realComplex << ", " << alpha.imaginaryComplex << ')';
+
+    return output;
 
 }
 
 
 
 /***************************************************************
- ProviderDB
+ operator>> 
  
  Use: Instiates an instance of the ProviderDB class
  
@@ -215,7 +233,15 @@ ostream operator<<()
  
  Returns:
  ***************************************************************/
-istream operator>>()
+istream& operator>>(istream& input, Complex& alpha)
 {
+    char ch;
+    input >> ch;
 
+    input >> alpha.realComplex;
+    input >> ch;
+    input >> alpha.imaginaryComplex;
+    input >> ch;
+
+    return input;
 }
