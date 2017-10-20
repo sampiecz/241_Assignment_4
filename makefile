@@ -1,3 +1,9 @@
+#
+# PROGRAM: Assign 4   
+# PROGRAMMER: Samuel Piecz 
+# LOGON ID: Z1732715 
+# DATE DUE: 10/19/17 
+#
 # Compiler variables
 CCFLAGS = -ansi -Wall -std=c++11
 

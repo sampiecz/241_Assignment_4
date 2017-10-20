@@ -1,14 +1,10 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
-#include <iostream>
 #include <ostream>
 #include <istream>
 using std::istream;
 using std::ostream;
-using std::cin;
-using std::endl;
-using std::cout;
 
 class Complex 
 {    
@@ -25,7 +21,7 @@ class Complex
     public:
         // Constructor
         Complex();
-        Complex(double newReal, double newImaginary);
+        Complex(double, double);
        
         // Complex
         void setComplex(double, double);

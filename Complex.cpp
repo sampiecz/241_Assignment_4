@@ -7,7 +7,7 @@
  TA: Sumaiya Abdul
  Date Due: October 19, 2017
 
- Purpose: Use operator overloaders. 
+ Purpose: Create operator overloaders for complex class. 
  ************************************************************/
 #include "Complex.h"
 
@@ -15,11 +15,11 @@
 /***************************************************************
  Complex Constructor 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Provides a default constructor with values set to 0. 
  
- Parameters: 1. No parameters. 
+ Parameters: No parameters. 
 
- Returns:
+ Returns: No return.
  ***************************************************************/
 Complex::Complex()
 {
@@ -31,11 +31,12 @@ Complex::Complex()
 /***************************************************************
  Alternate Complex Constructor 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Alternate constructor that can take values passed into it. 
  
- Parameters: 1. No parameters. 
+ Parameters: A double called newReal. Another double called
+ newImaginary.
 
- Returns:
+ Returns: No return.
  ***************************************************************/
 Complex::Complex(double newReal, double newImaginary)
 {
@@ -48,11 +49,12 @@ Complex::Complex(double newReal, double newImaginary)
 /***************************************************************
  setComplex 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: A setter method. Sets new real and imaginary numbers. 
  
- Parameters: 1. No parameters. 
+ Parameters: A double called newReal. Also takes a second double
+ called newImaginary. 
 
- Returns:
+ Returns: No return.
  ***************************************************************/
 void Complex::setComplex(double newReal, double newImaginary)
 {
@@ -65,11 +67,14 @@ void Complex::setComplex(double newReal, double newImaginary)
 /***************************************************************
  getComplex 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Getter method for complex class. Gets the objects real and
+ imaginary data members. 
  
- Parameters: 1. No parameters. 
+ Parameters: This method takes two references to double 
+ variables as arguments, representing the real and imaginary
+ parts of a complex number.
 
- Returns:
+ Returns: No return.
  ***************************************************************/
 void Complex::getComplex(double& newReal, double& newImaginary) const
 {
@@ -82,11 +87,12 @@ void Complex::getComplex(double& newReal, double& newImaginary) const
 /***************************************************************
  setRealPart
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Setter method for real number.  
  
- Parameters: 1. No parameters. 
+ Parameters: A double, representing the real part of a complex 
+ number. 
 
- Returns:
+ Returns: No return.
  ***************************************************************/
 void Complex::setRealPart(double newReal)
 {
@@ -98,11 +104,12 @@ void Complex::setRealPart(double newReal)
 /***************************************************************
  getRealPart 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Getter method that returns the real number.
  
- Parameters: 1. No parameters. 
+ Parameters: No parameters.
 
- Returns:
+ Returns: Returns realComplex which is a real number of the
+ double data type.
  ***************************************************************/
 double Complex::getRealPart() const
 {
@@ -114,11 +121,13 @@ double Complex::getRealPart() const
 /***************************************************************
  setImaginaryPart 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Assign the method parameter to the imaginary part data 
+ member of the object that called the method. 
  
- Parameters: 1. No parameters. 
+ Parameters: A double, representing the imaginary part of a 
+ complex number.
 
- Returns:
+ Returns: No return.
  ***************************************************************/
 void Complex::setImaginaryPart(double newImaginary)
 {
@@ -130,11 +139,12 @@ void Complex::setImaginaryPart(double newImaginary)
 /***************************************************************
  getImaginaryPart 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Return the data member representing the imaginary part of 
+ the complex number.
  
- Parameters: 1. No parameters. 
+ Parameters: None.
 
- Returns:
+ Returns: The imaginary part of the complex number (a double).
  ***************************************************************/
 double Complex::getImaginaryPart() const
 {
@@ -146,11 +156,12 @@ double Complex::getImaginaryPart() const
 /***************************************************************
  operator+ 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Makes it possible to add complex data objects.
  
- Parameters: 1. No parameters. 
+ Parameters: A reference to a constant Complex object. 
 
- Returns:
+ Returns: A Complex object that holds the result of the
+ arithmetic.
  ***************************************************************/
 Complex Complex::operator+(const Complex& rightOperand) const
 {
@@ -167,11 +178,11 @@ Complex Complex::operator+(const Complex& rightOperand) const
 /***************************************************************
  operator* 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Makes it possible to multiply complex data objects.  
  
- Parameters: 1. No parameters. 
+ Parameters:  A reference to a constant complex object.
 
- Returns:
+ Returns: The data object.  It's called storage in this case.
  ***************************************************************/
 Complex Complex::operator*(const Complex& rightOperand) const
 {
@@ -189,11 +200,11 @@ Complex Complex::operator*(const Complex& rightOperand) const
 /***************************************************************
  operator== 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Makes it possible to compare two complex data objects. 
  
- Parameters: 1. No parameters. 
+ Parameters: A reference to a constant complex object.
 
- Returns:
+ Returns: Returns either true or false. Depends.
  ***************************************************************/
 bool Complex::operator==(const Complex& rightOperand) const
 {
@@ -207,18 +218,19 @@ bool Complex::operator==(const Complex& rightOperand) const
 /***************************************************************
  operator<< 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Standalone function that couts complex objects. 
  
- Parameters: 1. No parameters. 
+ Parameters: A reference to an ostream object and a reference
+ to a complex object. 
 
- Returns:
+ Returns: A reference to an ostream object ie the first parameter.
  ***************************************************************/
-ostream& operator<<(ostream& output, const Complex& alpha)
+ostream& operator<<(ostream& returnMe, const Complex& complexObject)
 {
 
-    output << '(' << alpha.realComplex << ", " << alpha.imaginaryComplex << ')';
+    returnMe << '(' << complexObject.realComplex << ", " << complexObject.imaginaryComplex << ')';
 
-    return output;
+    return returnMe;
 
 }
 
@@ -227,21 +239,22 @@ ostream& operator<<(ostream& output, const Complex& alpha)
 /***************************************************************
  operator>> 
  
- Use: Instiates an instance of the ProviderDB class
+ Use: Standalone function that reads a complex object. 
  
- Parameters: 1. No parameters.
+ Parameters: First is a reference to an istream object. Second
+ is a reference to a complex object.
  
- Returns:
+ Returns: A reference to an istream object ie the first parameter.
  ***************************************************************/
-istream& operator>>(istream& input, Complex& alpha)
+istream& operator>>(istream& returnMe, Complex& complexObject)
 {
-    char ch;
-    input >> ch;
+    char holder;
+    returnMe >> holder;
 
-    input >> alpha.realComplex;
-    input >> ch;
-    input >> alpha.imaginaryComplex;
-    input >> ch;
+    returnMe >> complexObject.realComplex;
+    returnMe >> holder;
+    returnMe >> complexObject.imaginaryComplex;
+    returnMe >> holder;
 
-    return input;
+    return returnMe;
 }
